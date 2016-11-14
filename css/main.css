@@ -1,0 +1,156 @@
+@charset "utf-8";
+
+.clearfix:before{
+    content:'';
+    display: table;
+    line-height: 0;
+}
+.clearfix:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.a{
+    color: #333;
+    text-decoration: none;
+}
+.lf{float: left;}
+.rf{float: right;}
+
+body {
+    background-color: #f2f1ef;
+}
+
+header{
+    padding:9px 0 11px;
+    background-color:'#4d4d4d';
+    background-image: -moz-linear-gradient(top,#4d4d4d,#514f4b);
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#4d4d4d),to(#514f4b));
+    background-image: -webkit-linear-gradient(top,#4d4d4d,#514f4b);
+    background-image: -o-linear-gradient(top,#4d4d4d,#514f4b);
+    background-image: linear-gradient(to bottom,#4d4d4d,#514f4b);
+    font-size: 14px;
+    line-height: 16px;
+    color: #dbdbdb;
+    box-shadow: 0 2px 3px rgba(0,0,0,.38);
+}
+
+.nav{
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.nav ul{
+    list-style: none;
+}
+
+header ul li{
+    float:left;
+}
+header ul li span{
+    margin-top:2px;
+    /*对span设置高度的方法：display：inline-break;*/
+    /*如果高度低于字体高度需要设置overflow：hidden才生效*/
+    height: 10px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+header ul li a{
+    margin:1px 8px;
+    color: #dbdbdb;
+}
+
+header .loginBt{
+    margin-right: 10px;
+}
+header .loginBt a{
+    color: #f8b002;
+}
+#logo{
+    width:725px;
+    margin:0 auto;
+    padding: 20px 0 16px;
+}
+
+#logo a{
+    display: inline-block;
+    width:155px;
+    height:38px;
+    margin-left:6px;
+    background: url(../img/img_sohupp_logo.png) no-repeat;
+    background-size: 100%;
+}
+
+section{
+    position: relative;
+    width: 725px;
+    margin:0 auto;
+    min-height: 300px;
+    background:#fff;
+    -webkit-border-radius:8px;
+    -o-border--radius:8px;
+    border-radius:8px;
+    -webkit-box-shadow: 0 2px 4px rgba(0,0,0,.08),inset 0 1px 2px rgba(255,255,255,.75),0 0 135px 40px rgba(248,176,2,.1);
+    -moz-box-shadow: 0 2px 4px rgba(0,0,0,.08),inset 0 1px 2px rgba(255,255,255,.75),0 0 135px 40px rgba(248,176,2,.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,.08),inset 0 1px 2px rgba(255,255,255,.75),0 0 135px 40px rgba(248,176,2,.1);
+}
+
+.bg-fox{
+    width:145px;
+    height: 90px;
+    position: absolute;
+    background: url(../img/icons_reg.png) no-repeat right top;
+    right:-88px;
+    top:-35px;
+}
+.content{
+    padding: 42px 32px 32px 42px;
+    overflow: hidden;
+}
+.title{
+    margin-bottom: 40px;
+    height:25px;
+}
+.title li{
+    float: left;
+    margin-bottom: -1px;
+}
+.title li a{
+    padding: 0;
+    border: 0;
+    font-size: 21px;
+    line-height: 21px;
+    color: #8f8f8f;
+}
+.title li a i{
+    width:25px;
+    height: 25px;
+    display: inline-block;
+    margin-right: 12px;
+}
+
+.title i.img-phone{
+    background: url(../img/icons_reg.png) no-repeat -50px -60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

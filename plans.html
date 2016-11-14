@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width:600px;
+            text-align:center;
+            margin: 20px auto;
+        }
+        canvas{
+            background: #c0c0c0;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <canvas id="c1" width="500" height="400"></canvas>
+    </div>
+    <script>
+        var planGame = {
+            ctx:null,
+            loadProgress:0,
+            interval:null,
+            deg:0,
+            imgs:[
+                'img/p2.png',
+                'img/p3.png',
+                'img/p4.png',
+                'img/p5.png'
+            ],
+
+            start: function () {
+                this.ctx = c1.getContext('2d');
+                this.loadResource();
+            },
+
+            loadResource: function () {
+                for(var i= 0,len=this.imgs.length;i<len;i++){
+                    var img = new Image();
+                    img.src=this.imgs[i];
+                    img.onload = function(){
+                        this.drawProgress(this.loadProgress+=25);
+                        if(this.loadProgress==100)this.drawPlans();
+                    }.bind(this);
+                }
+            },
+
+            drawProgress: function (num) {
+                this.ctx.clearRect(0,0,500,500);
+                this.ctx.beginPath();
+                this.ctx.lineWidth=20;
+                this.ctx.strokeStyle = '#ccc';
+                this.ctx.arc(250,200,100,270/180*Math.PI,720/180*Math.PI);
+                this.ctx.stroke();
+
+                this.ctx.beginPath();
+                this.ctx.lineWidth=20;
+                this.ctx.strokeStyle = '#f00';
+                this.ctx.arc(250,200,100,270/180*Math.PI,(270+num/100*360)/180*Math.PI);
+                this.ctx.stroke();
+
+                this.ctx.font="40px microsoft yahei";
+                this.ctx.fillStyle = '#d00';
+                var txtW = this.ctx.measureText(num+'%').width;
+                var txtH = this.ctx.measureText(num+'%').height;
+                this.ctx.fillText(num+'%',250-txtW/2,200+40/2);
+            },
+            drawPlans:function(){
+                this.interval = setInterval(function () {
+                    this.deg += 10;
+                    this.ctx.clearRect(0,0,500,400);
+                    this.drawPlan(this.imgs[0],100,100);
+                    this.drawPlan(this.imgs[1],400,100);
+                    this.drawPlan(this.imgs[2],100,300);
+                    this.drawPlan(this.imgs[3],400,300);
+                }.bind(this),40);
+            },
+            drawPlan:function(src,x,y){
+                var img = new Image();
+                img.src = src;
+                img.onload=function(img,x,y){
+                    this.ctx.translate(x,y);
+                    this.ctx.rotate(this.deg*Math.PI/180);
+                    this.ctx.drawImage(img,-img.width/2,-img.height/2,img.width,img.height);
+                    this.ctx.rotate(-1*this.deg*Math.PI/180);
+                    this.ctx.translate(-x,-y);
+                }.bind(this,img,x,y);
+            }
+        }
+        planGame.start();
+    </script>
+</body>
+</html>
